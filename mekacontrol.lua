@@ -149,15 +149,7 @@ local function info()
     mon.setCursorPos(1,22) mon.setTextColor(8192) mon.write("Filled: ") mon.setTextColor(1) mon.write(epercent .. "%")
 end
 
-if pcall(regulator, info) then
-    while true do
-        regulator()
-        info() end
-    else
-        rla.scram()
+while true do
+    regulator()
+    info()
 end
-
---while true do
---    regulator()
---    info()
---end
