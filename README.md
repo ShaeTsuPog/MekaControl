@@ -3,7 +3,7 @@ CC: Tweaked programs for managing a full Mekanism Fission Reactor setup (includi
 
 # Installation
 
-Run the following command: pastebin get H9gM50my startup
+Run the following command: `pastebin get H9gM50my startup`
 
 It will download the mekacontrol script and start function loops that monitor various aspects of the reactor, boiler, turbine, and induction matrix, and immediately scram the reactor if anything happens that could cause a meltdown.
 
