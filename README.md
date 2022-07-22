@@ -11,6 +11,8 @@ Induction Matrix filling up? scrammed.
 
 Something disconnects from the network? scrammed, and the script stops and leaves the reactor off, because this is an easy way to get a meltdown otherwise.
 
+Should work 99% of the time... probably.
+
 # Installation
 
 Run the following command: `pastebin get H9gM50my startup`
