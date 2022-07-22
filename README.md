@@ -15,9 +15,11 @@ Should work 99% of the time... probably.
 
 # Installation
 
-Run the following command: `pastebin get H9gM50my startup`
+Run the following command: `pastebin get H9gM50my startup.lua`
 
 It will download the mekacontrol script and start function loops that monitor various aspects of the reactor, boiler, turbine, and induction matrix, and immediately scram the reactor if anything happens that could cause a meltdown.
+
+Then start the program by running `startup`
 
 **NOTE: This script is meant to monitor all 4 previously listed multiblocks, as well as cast info to a monitor, and will not work unless reactor, boiler, turbine, matrix, and a monitor are networked together.**
 
