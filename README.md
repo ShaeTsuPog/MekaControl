@@ -2,9 +2,13 @@
 CC: Tweaked programs for managing a full Mekanism Fission Reactor setup (including boiler, turbine, and induction matrix) with emergency switches to scram the reactor if something is going wrong.
 
 Low coolant? scrammed.
+
 Nowhere for heated collant to go? scrammed.
+
 Waste filling up? scrammed.
+
 Induction Matrix filling up? scrammed.
+
 Something disconnects from the network? scrammed, and the script stops and leaves the reactor off, because this is an easy way to get a meltdown otherwise.
 
 # Installation
