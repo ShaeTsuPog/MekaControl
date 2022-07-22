@@ -3,7 +3,7 @@ CC: Tweaked programs for managing a full Mekanism Fission Reactor setup (includi
 
 Low coolant? scrammed.
 
-Nowhere for heated collant to go? scrammed.
+Nowhere for heated coolant to go? scrammed.
 
 Waste filling up? scrammed.
 
