@@ -20,7 +20,7 @@ It will download the mekacontrol script and start function loops that monitor va
 **NOTE: This script is meant to monitor all 4 previously listed multiblocks, as well as cast info to a monitor, and will not work unless reactor, boiler, turbine, matrix, and a monitor are networked together.**
 
 # Note for ATM players
-For some reason, the ATM pack devs think http requests are a security issue and have disabled them. If you're in singleplayer you can renable it in the config files. If you're on a server, and they haven't already, either ask your server admins to change this, or have fun manually creating the files and copy pasting.
+For some reason, the ATM pack devs think http requests are a security issue and have disabled them. If you're in singleplayer you can re-enable it in the config files. If you're on a server, and they haven't already, either ask your server admins to change this, or have fun manually creating the files and copy pasting.
 
 # Credit
 Some code in the startup script was copied from Krakaen's popular bigger reactor control script, because it served this purpose well. Shoutout to him and his amazing reactor control script.
