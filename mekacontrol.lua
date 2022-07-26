@@ -3,24 +3,36 @@ local boi = peripheral.find("boilerValve")
 local trb = peripheral.find("turbineValve")
 local ind = peripheral.find("inductionPort")
 local mon = peripheral.find("monitor")
+local scramCount = 0
 
 local function regulator()
-    if rla.getCoolantFilledPercentage() > 0.7 and
-        rla.getHeatedCoolantFilledPercentage() < 0.7 and
-        rla.getWasteFilledPercentage() < 0.7 and
-        rla.getDamagePercent() < 1 and
-        ind.getEnergyFilledPercentage() < 0.9 and
-        rla.getStatus() == false
+
+    local coolant = math.ceil(rla.getCoolantFilledPercentage() * 100)
+    local heated = math.ceil(rla.getHeatedCoolantFilledPercentage() * 100)
+    local waste = math.ceil(rla.getWasteFilledPercentage() * 100)
+    local damage = rla.getDamagePercent()
+    local energy = math.ceil(ind.getEnergyFilledPercentage() * 100)
+
+    local status = ""
+    if rla.getStatus() then
+        status = "true"
+    else
+        status = "false"
+    end
+
+    if coolant > 70 and heated < 70 and waste < 70 and damage < 1 and energy < 90 and status == "false"
     then
         rla.activate()
-    elseif rla.getStatus() == true and
-        (rla.getCoolantFilledPercentage() < 0.7 or
-            rla.getHeatedCoolantFilledPercentage() > 0.7 or
-            rla.getWasteFilledPercentage() > 0.7 or
-            rla.getDamagePercent() > 1 or
-            ind.getEnergyFilledPercentage() > 0.9)
+        print("ACTIVATED | INFO: " .. "C:" .. string.format("%3.0f", coolant) .. "%",
+            "H:" .. string.format("%3.0f", heated) .. "%", "W:" .. string.format("%3.0f", waste) .. "%",
+            "E:" .. string.format("%3.0f", energy) .. "%")
+    elseif status == "true" and (coolant <= 70 or heated >= 70 or waste >= 70 or damage >= 1 or energy >= 90)
     then
         rla.scram()
+        print("SCRAMMED | INFO: " .. "C:" .. string.format("%3.0f", coolant) .. "%",
+            "H:" .. string.format("%3.0f", heated) .. "%", "W:" .. string.format("%3.0f", waste) .. "%",
+            "E:" .. string.format("%3.0f", energy) .. "%")
+        scramCount = scramCount + 1
     end
 end
 
@@ -147,6 +159,8 @@ local function info()
     mon.setCursorPos(1,20) mon.setTextColor(8192) mon.write("Output: ") mon.setTextColor(1) mon.write(outputDisp)
     mon.setCursorPos(1,21) mon.setTextColor(8192) mon.write("Energy: ") mon.setTextColor(1) mon.write(energyDisp)
     mon.setCursorPos(1,22) mon.setTextColor(8192) mon.write("Filled: ") mon.setTextColor(1) mon.write(epercent .. "%")
+
+    mon.setCursorPos(1,24) mon.setTextColor(16384) mon.write("SCRAM COUNT: ") mon.write(string.format("%3.0f", scramCount))
 end
 
 while true do
